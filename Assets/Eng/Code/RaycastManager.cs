@@ -39,7 +39,6 @@ public class RaycastManager : MonoBehaviour
 
             if (cellObject.TryGetComponent(out Cell cellRef))
             {
-                //EventManager.TriggerEvent("OnCellDown", (object)itemSO);
                 DragManager.Instance.OnCellDown(ref cellRef);
             }
         }
@@ -59,7 +58,6 @@ public class RaycastManager : MonoBehaviour
 
             if (cellObject.TryGetComponent(out Cell cellRef))
             {
-                //EventManager.TriggerEvent("OnCellDown", (object)itemSO);
                 DragManager.Instance.OnCellUp(ref cellRef);
             }
         }
