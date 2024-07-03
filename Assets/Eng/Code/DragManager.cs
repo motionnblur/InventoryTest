@@ -50,10 +50,14 @@ public class DragManager : MonoBehaviour
 
         cellRef.Redraw();
         currentCell.Redraw();
+
+        currentCell = null;
     }
 
     private void OnMouseUp()
     {
         Dragger.Instance.OnDragEnd();
+
+        if(currentCell != null) currentCell = null;
     }
 }
