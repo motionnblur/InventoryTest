@@ -33,27 +33,27 @@ public class DragManager : MonoBehaviour
         EventManager.RemoveListener("OnMouseUp", OnMouseUp);
     }
 
-    public void OnCellDown(ref Cell cellData)
+    public void OnCellDown(ref Cell cellRef)
     {
-        if(cellData.itemSO.amount == 0) return;
+        if(cellRef.itemSO.amount == 0) return;
 
-        currentCell = cellData;
-        EventManager.TriggerEvent("OnDragStart", (object)cellData); //Dragger.cs
+        currentCell = cellRef;
+        Dragger.Instance.OnDragStart(cellRef);
     }
-    public void OnCellUp(ref Cell cellData)
+    public void OnCellUp(ref Cell cellRef)
     {
         if(currentCell == null) return;
         
-        ItemSO tempSO = cellData.itemSO;
-        cellData.itemSO = currentCell.itemSO;
+        ItemSO tempSO = cellRef.itemSO;
+        cellRef.itemSO = currentCell.itemSO;
         currentCell.itemSO = tempSO;
 
-        cellData.Redraw();
+        cellRef.Redraw();
         currentCell.Redraw();
     }
 
     private void OnMouseUp()
     {
-        EventManager.TriggerEvent("OnDragEnd"); //Dragger.cs
+        Dragger.Instance.OnDragEnd();
     }
 }
