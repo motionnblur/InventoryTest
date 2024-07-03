@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e1f620608abb3498d495c7db9a35b0, type: 3}
   m_Name: item3
   m_EditorClassIdentifier: 
-  icon: {fileID: -7401549909784220902, guid: 637fa6efb7589bd4080fa4ed14b024cd, type: 3}
-  amount: 1
+  icon: {fileID: -9154038787517364728, guid: 637fa6efb7589bd4080fa4ed14b024cd, type: 3}
+  amount: 2

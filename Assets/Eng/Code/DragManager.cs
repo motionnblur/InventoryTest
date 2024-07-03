@@ -42,11 +42,16 @@ public class DragManager : MonoBehaviour
     }
     public void OnCellUp(ref Cell cellRef)
     {
-        if(currentCell == null) return;
-        
-        ItemSO tempSO = cellRef.itemSO;
-        cellRef.itemSO = currentCell.itemSO;
-        currentCell.itemSO = tempSO;
+        if(currentCell == null || currentCell == cellRef) return;
+
+        if(currentCell.itemSO.icon == cellRef.itemSO.icon){
+            cellRef.itemSO.amount += currentCell.itemSO.amount;
+            currentCell.EmptyCell();
+        }else{
+            ItemSO tempSO = cellRef.itemSO;
+            cellRef.itemSO = currentCell.itemSO;
+            currentCell.itemSO = tempSO;
+        }
 
         cellRef.Redraw();
         currentCell.Redraw();

@@ -25,4 +25,10 @@ public class Cell : MonoBehaviour
         img.sprite = itemSO.icon;
         text.text = itemSO.amount.ToString();
     }
+    public void EmptyCell()
+    {
+        itemSO.amount = 0;
+        itemSO.icon = null;
+        text.text = "";
+    }
 }
