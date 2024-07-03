@@ -26,14 +26,7 @@ public class RaycastManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        m_PointerEventData = new PointerEventData(m_EventSystem);
-        m_PointerEventData.position = Input.mousePosition;
-
-        List<RaycastResult> results = new List<RaycastResult>();
-
-        m_Raycaster.Raycast(m_PointerEventData, results);
-
-        foreach (RaycastResult result in results)
+        foreach (RaycastResult result in DoRaycastAndGetResults())
         {
             var cellObject = result.gameObject;
 
@@ -45,14 +38,7 @@ public class RaycastManager : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        m_PointerEventData = new PointerEventData(m_EventSystem);
-        m_PointerEventData.position = Input.mousePosition;
-
-        List<RaycastResult> results = new List<RaycastResult>();
-
-        m_Raycaster.Raycast(m_PointerEventData, results);
-
-        foreach (RaycastResult result in results)
+        foreach (RaycastResult result in DoRaycastAndGetResults())
         {
             var cellObject = result.gameObject;
 
@@ -62,4 +48,18 @@ public class RaycastManager : MonoBehaviour
             }
         }
     }
+
+#region helpers
+    private List<RaycastResult> DoRaycastAndGetResults()
+    {
+        m_PointerEventData = new PointerEventData(m_EventSystem);
+        m_PointerEventData.position = Input.mousePosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        m_Raycaster.Raycast(m_PointerEventData, results);
+
+        return results;
+    }
+#endregion
 }
